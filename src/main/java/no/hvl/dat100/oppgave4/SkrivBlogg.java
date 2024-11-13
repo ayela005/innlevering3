@@ -1,15 +1,24 @@
 package no.hvl.dat100.oppgave4;
-
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
-
-import no.hvl.dat100.common.TODO;
-import no.hvl.dat100.oppgave3.*;
+import java.io.FileWriter;
 
 public class SkrivBlogg {
-
-	public static boolean skriv(Blogg samling, String mappe, String filnavn) {
-
-		throw new UnsupportedOperationException(TODO.method());
-	}
+	
+public static boolean skriv(Bloggsamling, String mappe, String filnavn) {
+   
+    try (PrintWriter writer = new PrintWriter(new FileWriter(mappe + "/" + filnavn))) {
+       
+        writer.print(samling.toString());
+       
+    } catch (IOException e) {
+       
+        System.out.println("En feil oppstod ved skriving til fil: " + e.getMessage());
+        return false;  
+    }
 }
+}
+
+
+
+
