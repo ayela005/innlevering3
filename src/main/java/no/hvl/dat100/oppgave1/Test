@@ -1,0 +1,32 @@
+package no.hvl.dat100.oppgave1;
+
+public class TestInnlegg {
+    public static void main(String[] args) {
+
+        // Lag en konkret subklasse av Innlegg for test
+        class TekstInnlegg extends Innlegg {
+            public TekstInnlegg(int id, String bruker, String dato) {
+                super(id, bruker, dato);
+            }
+
+            public TekstInnlegg(int id, String bruker, String dato, int likes) {
+                super(id, bruker, dato, likes);
+            }
+        }
+
+        // Test av konstruktør med 3 parametre
+        TekstInnlegg innlegg1 = new TekstInnlegg(1, "Bruker1", "2024-11-12");
+        System.out.println("Innlegg1: " + innlegg1.toString());
+
+        // Test av konstruktør med 4 parametre
+        TekstInnlegg innlegg2 = new TekstInnlegg(2, "Bruker2", "2024-11-12", 5);
+        System.out.println("Innlegg2: " + innlegg2.toString());
+
+        // Test doLike-metoden
+        innlegg1.doLike();
+        System.out.println("Innlegg1 etter like: " + innlegg1.toString());
+
+        // Test erLik-metoden
+        System.out.println("Er innlegg1 og innlegg2 like? " + innlegg1.erLik(innlegg2));
+    }
+}
